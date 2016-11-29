@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="StuButton">
+        <attr name="stu_label" format="string"/>
+        <attr name="stu_thumbDrawable" format="reference"/>
+        <attr name="stu_background" format="reference"/>
+    </declare-styleable>
+</resources>
