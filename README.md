@@ -12,19 +12,19 @@ In your project `build.gradle`
 
 ```groovy
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
 	}
+}
 ```
 
 In your module `build.gradle`
 
 ```groovy
-	dependencies {
-	        compile 'com.github.esafirm:android-stubutton:1.0.0'
-	}
+dependencies {
+	implementation 'com.github.esafirm:android-stubutton:1.1.0'
+}
 ```
 
 ## Setup
@@ -40,7 +40,7 @@ In your module `build.gradle`
 Complete example is in the sample
 
 ## License
-[MIT](https://raw.githubusercontent.com/esafirm/android-stubutton/master/LICENSE)
+Esa Firman @ [MIT](https://raw.githubusercontent.com/esafirm/android-stubutton/master/LICENSE)
 
 
 
