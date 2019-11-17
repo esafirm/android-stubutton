@@ -4,7 +4,11 @@ package com.esafirm.stubutton;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.ViewTreeObserver;
@@ -14,6 +18,9 @@ import android.widget.TextView;
 
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StuButton extends RelativeLayout {
 
@@ -156,6 +163,48 @@ public class StuButton extends RelativeLayout {
         stuTxtLabel = null;
         stuImgThumb = null;
         stuBackground = null;
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed, l, t, r, b);
+        updateGestureExclusion();
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        updateGestureExclusion();
+    }
+
+    /* --------------------------------------------------- */
+    /* > Handle Gesture Navigation */
+    /* --------------------------------------------------- */
+
+    private List<Rect> gestureExclusionRects = new ArrayList<>();
+    private Rect focusedRect = new Rect();
+
+    private void updateGestureExclusion() {
+        // Skip this call if we're not running on Android 10+
+        if (Build.VERSION.SDK_INT < 29) {
+            return;
+        }
+
+        // First, lets clear out any existing rectangles
+        gestureExclusionRects.clear();
+
+        // Now lets work out which areas should be excluded. For a SeekBar this will
+        // be the bounds of the thumb drawable.
+
+        getFocusedRect(focusedRect);
+        gestureExclusionRects.add(focusedRect);
+
+        // If we had other elements in this view near the edges, we could exclude them
+        // here too, by adding their bounds to the list
+
+        Log.d("Exclusion", gestureExclusionRects.toString());
+        // Finally pass our updated list of rectangles to the system
+        setSystemGestureExclusionRects(gestureExclusionRects);
     }
 
     /* --------------------------------------------------- */

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="80dp">
 
@@ -10,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/stu_img_thumb"
         android:layout_alignTop="@+id/stu_img_thumb"
-        android:background="@drawable/stu_default_bg"/>
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/stu_text_label"
@@ -28,6 +29,7 @@
         android:layout_height="48dp"
         android:layout_centerVertical="true"
         android:adjustViewBounds="true"
-        android:background="@drawable/stu_circle_material"/>
+        android:background="@drawable/stu_circle_material"
+        tools:ignore="ContentDescription" />
 
 </RelativeLayout>
