@@ -8,7 +8,6 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.ViewTreeObserver;
@@ -182,7 +181,7 @@ public class StuButton extends RelativeLayout {
     /* --------------------------------------------------- */
 
     private List<Rect> gestureExclusionRects = new ArrayList<>();
-    private Rect focusedRect = new Rect();
+    private Rect excludeRect = new Rect();
 
     private void updateGestureExclusion() {
         // Skip this call if we're not running on Android 10+
@@ -196,13 +195,12 @@ public class StuButton extends RelativeLayout {
         // Now lets work out which areas should be excluded. For a SeekBar this will
         // be the bounds of the thumb drawable.
 
-        getFocusedRect(focusedRect);
-        gestureExclusionRects.add(focusedRect);
+        getDrawingRect(excludeRect);
+        gestureExclusionRects.add(excludeRect);
 
         // If we had other elements in this view near the edges, we could exclude them
         // here too, by adding their bounds to the list
 
-        Log.d("Exclusion", gestureExclusionRects.toString());
         // Finally pass our updated list of rectangles to the system
         setSystemGestureExclusionRects(gestureExclusionRects);
     }

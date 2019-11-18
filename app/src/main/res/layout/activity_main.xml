@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
@@ -14,8 +13,28 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
+        app:stu_background="@drawable/background_sample"
         app:stu_label="No Money"
-        app:stu_thumbDrawable="@drawable/circle_material"
-        app:stu_background="@drawable/background_sample"/>
+        app:stu_thumbDrawable="@drawable/circle_material" />
+
+    <com.esafirm.stubutton.StuButton
+        android:id="@+id/stuButton1"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        app:stu_background="@drawable/background_sample"
+        app:stu_label="No Money"
+        app:stu_thumbDrawable="@drawable/circle_material" />
+
+
+    <com.esafirm.stubutton.StuButton
+        android:id="@+id/stuButton2"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="20dp"
+        app:stu_background="@drawable/background_sample"
+        app:stu_label="No Money"
+        app:stu_thumbDrawable="@drawable/circle_material" />
+
 
 </LinearLayout>
